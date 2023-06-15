@@ -1,0 +1,33 @@
+// header.js
+
+function generateHeader(title) {
+  return `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <title>${title}</title>
+    </head>
+    <body>
+      <header>
+        <h1>${title}</h1>
+      </header>
+  `;
+}
+
+module.exports = generateHeader;
+
+
+// index.js
+
+const generateHeader = require('./header');
+
+const title = 'My Website';
+
+// Generate the header HTML
+const headerHTML = generateHeader(title);
+
+// Print the header HTML
+console.log(headerHTML);
+
+

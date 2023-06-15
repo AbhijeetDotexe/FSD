@@ -1,0 +1,46 @@
+const Sequelize = require('sequelize');
+
+// Create a new Sequelize instance
+const sequelize = new Sequelize('database_name', 'username', 'password', {
+  host: 'localhost',
+  dialect: 'mysql',
+});
+
+// Test the database connection
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Database connection has been established successfully.');
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err);
+  });
+
+module.exports = sequelize;
+
+
+
+
+const sequelize = require('./database');
+
+// Define a model
+const User = sequelize.define('user', {
+  name: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  email: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    unique: true,
+  },
+});
+
+// Sync the model with the database
+sequelize.sync()
+  .then(() => {
+    console.log('Database synchronized successfully.');
+  })
+  .catch(err => {
+    console.error('Unable to synchronize the database:', err);
+  });

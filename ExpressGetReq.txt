@@ -1,0 +1,20 @@
+const express = require('express');
+const app = express();
+const port = 3000;
+
+// Define route handling GET request to "/api/users"
+app.get('/api/users', (req, res) => {
+  // Simulated user data
+  const users = [
+    { name: 'John Doe', email: 'john@example.com' },
+    { name: 'Jane Smith', email: 'jane@example.com' },
+  ];
+
+  // Return the user data as JSON response
+  res.json(users);
+});
+
+// Start the server
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
+});
